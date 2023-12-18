@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        ".eslintrc": "json",
+        "*.vue": "vue",
+        "*.wxml": "html",
+        "*.wxss": "css"
+    }
+}
