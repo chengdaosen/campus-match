@@ -29,7 +29,12 @@
     "showShadowRootInWxmlPanel": true,
     "packNpmManually": false,
     "enableEngineNative": false,
-    "packNpmRelationList": [],
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./"
+      }
+    ],
     "minifyWXSS": true,
     "showES6CompileOption": false,
     "minifyWXML": true,
@@ -41,7 +46,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.19.4",
-  "appid": "wxa6a7275559a681ec",
+  "appid": "wx241b505949aaf057",
   "projectname": "miniprogram-92",
   "condition": {},
   "editorSetting": {
