@@ -1,0 +1,15 @@
+<view class="customTabbar">
+  <view bindtap="switchTab" data-path="/pages/index/index">
+    <image class="imgBox" src="../assets/icon/首页.png"></image>
+    <view class="title">首页</view>
+  </view>
+  <navigator class="cell" hover-class="none" open-type="navigate" url="{{ path }}">
+    <view class="imgBox">
+      <image src="../assets/icon/添加.png" class="img_icon" />
+    </view>
+  </navigator>
+  <view bindtap="switchTab" data-path="/pages/my/index">
+    <image class="imgBox" src="../assets/icon/我的.png"></image>
+    <view class="title">我的</view>
+  </view>
+</view>

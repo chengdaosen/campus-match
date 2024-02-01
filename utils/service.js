@@ -7,7 +7,7 @@ export const myRequest = async (params) => {
     mask: true,
   })
 
-  let myHeader = { ...params.header }
+  let myHeader = { ...params.header } 
   if (params.url.startsWith('/needToken/')) {
     myHeader['Authorization'] = wx.getStorageSync('token')
   }

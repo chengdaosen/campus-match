@@ -1,0 +1,40 @@
+.customTabbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #efefef;
+    background: rgb(255, 255, 255);
+}
+
+.cell {
+    height: 100rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.imgBox {
+    width: 100%;
+    height: 50rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.img_icon {
+    position: absolute;
+    top: -20rpx;
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 50%;
+    border-top: 2rpx solid #efefef;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 10rpx;
+}
+
+.title {
+    text-align: center;
+    font-size: 28rpx;
+    color: #909090;
+}
