@@ -7,27 +7,15 @@
       <view bindtap="getUserProfile" class="login">
         <image src="../../assets/image/未登录头像.jpg"></image>
         <view class="instant">点击进行微信授权登录</view>
-        <view class="than">></view>
       </view>
     </block>
     <block wx:else>
       <view class="login">
         <image src="{{ userInfo.avatarUrl }}"></image>
         <view class="instant">{{ userInfo.nickName }}</view>
-        <button bindtap="loginout">退出登录</button>
+        <view bindtap="loginout">退出登录</view>
       </view>
     </block>
   </view>
-  <view class="item">
-    <ul>
-      <li>
-        <text> 我的关注 </text>
-        <view class="right_arrow"></view>
-      </li>
-      <li>我的发布</li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </view>
+
 </view>

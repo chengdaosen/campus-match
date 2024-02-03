@@ -1,15 +1,25 @@
 <view class="customTabbar">
-  <view bindtap="switchTab" data-path="/pages/index/index">
-    <image class="imgBox" src="../assets/icon/首页.png"></image>
-    <view class="title">首页</view>
+  <view bindtap="switchTab" data-path="/pages/index/index" data-index="0">
+    <image
+      class="imgBox"
+      src="{{ selected == 0 ? list[0].selectedIconPath : list[0].iconPath }}"
+    ></image>
+    <view class="title" style="color: {{ selected === 0 ? selectedColor : color }}"
+      >首页</view
+    >
   </view>
   <navigator class="cell" hover-class="none" open-type="navigate" url="{{ path }}">
     <view class="imgBox">
       <image src="../assets/icon/添加.png" class="img_icon" />
     </view>
   </navigator>
-  <view bindtap="switchTab" data-path="/pages/my/index">
-    <image class="imgBox" src="../assets/icon/我的.png"></image>
-    <view class="title">我的</view>
+  <view bindtap="switchTab" data-path="/pages/my/index" data-index="1">
+    <image
+      class="imgBox"
+      src="{{ selected == 1 ? list[1].selectedIconPath : list[1].iconPath }}"
+    ></image>
+    <view class="title" style="color: {{ selected === 1 ? selectedColor : color }}"
+      >我的</view
+    >
   </view>
 </view>

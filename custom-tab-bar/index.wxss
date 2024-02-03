@@ -1,12 +1,13 @@
 .customTabbar {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     border-top: 1px solid #efefef;
     background: rgb(255, 255, 255);
 }
 
 .cell {
+    width: 120rpx;
     height: 100rpx;
     display: flex;
     flex-direction: column;
