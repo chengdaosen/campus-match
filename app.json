@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/index/index", "pages/my/index"],
+  "pages": ["pages/index/index", "pages/my/index", "pages/add/index", "pages/post/index"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0061b0",
@@ -30,6 +30,7 @@
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
     "van-search": "@vant/weapp/search/index",
-    "van-nav-bar": "@vant/weapp/nav-bar/index"
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-popup": "@vant/weapp/popup/index"
   }
 }

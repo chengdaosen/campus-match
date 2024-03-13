@@ -3,12 +3,11 @@ import { myRequest } from '../../utils/service'
 Page({
   data: {
     userInfo: {},
-    hasUserInfo: false,
+    token: '',
   },
 
   // 页面加载时触发
   onLoad() {
-    // 这里可以添加一些初始化逻辑
   },
 
   // 页面显示时触发
@@ -49,7 +48,7 @@ Page({
 
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true,
+          token: true,
         })
       },
       fail: (res) => {
@@ -66,7 +65,7 @@ Page({
   loginout() {
     this.setData({
       userInfo: '',
-      hasUserInfo: false,
+      token: false,
     })
     wx.removeStorage({
       key: 'token',

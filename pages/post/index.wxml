@@ -1,0 +1,12 @@
+<!-- index.wxml -->
+<form class="container" bindsubmit="formSubmit" id="1" bindreset="formReset">
+  <textarea
+    auto-focus
+    value="{{ postContent }}"
+    bindinput="handleInput"
+    auto-height
+    placeholder="请输入帖子内容"
+  />
+  <view style="height: 100rpx"></view>
+  <button class="btn" formType="submit" disabled="{{ !postContent }}">发布</button>
+</form>

@@ -5,3 +5,29 @@
   bind:search="onSearch"
   bind:cancel="onCancel"
 />
+
+<view class="banner">
+  <swiper
+    indicator-dots="true"
+    autoplay="true"
+    interval="3000"
+    style="width: 90%; margin: 0 auto"
+  >
+    <swiper-item>
+      <image src="/assets/image/轮播图1.png" style="border-radius: 10px"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/assets/image/轮播图2.png" style="border-radius: 10px"></image>
+    </swiper-item>
+  </swiper>
+</view>
+<view class="post-list">
+  <block wx:for="{{ posts }}" wx:key="index">
+    <view class="post">
+      <image class="avatar" src="{{ item.head_pic }}"></image>
+      <view class="content">{{ item.content }}</view>
+    </view>
+  </block>
+  <view class="no-more">我是有底线的呦~</view>
+</view>
+

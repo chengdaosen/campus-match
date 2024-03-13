@@ -1,0 +1,49 @@
+.banner {
+  width: 100%;
+  height: 350rpx;
+}
+
+.banner swiper {
+  height: 100%;
+  width: 100%;
+}
+
+.banner image {
+  width: 100%;
+  height: 350rpx;
+}
+
+.post-list {
+  width: 100%;
+}
+
+.post {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.content {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  min-height: 50px;
+  /* 最小高度，可根据内容动态增加 */
+}
+
+.no-more {
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 26rpx;
+  color: #909399;
+}

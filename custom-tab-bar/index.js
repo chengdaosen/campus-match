@@ -1,6 +1,6 @@
 Component({
   data: {
-    path: 'pages/add/index',
+    path: '/pages/post/index',
     selected: 0,
     color: '#6e6d6b',
     selectedColor: '#0061b0',
