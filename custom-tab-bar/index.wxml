@@ -8,7 +8,7 @@
       >首页</view
     >
   </view>
-  <navigator class="cell" hover-class="none" open-type="navigate" url="{{ path }}">
+  <navigator class="cell" hover-class="none" open-type="navigate" bindtap="navigateToTargetPage">
     <view class="imgBox">
       <image src="../assets/icon/添加.png" class="img_icon" />
     </view>

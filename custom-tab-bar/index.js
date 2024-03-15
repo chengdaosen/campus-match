@@ -1,3 +1,4 @@
+import getUserProfile from '../utils/getUserInfo'
 Component({
   data: {
     path: '/pages/post/index',
@@ -23,6 +24,33 @@ Component({
   },
   attached() {},
   methods: {
+    navigateToTargetPage() {
+      // 在点击事件中进行路由跳转判断
+      const token = wx.getStorageSync('token');
+      if (token) {
+        // 满足条件时进行跳转
+        wx.navigateTo({
+          url: '/pages/post/index'
+        });
+      } else {
+        // 不满足条件时给出提示或者执行其他操作
+        wx.showModal({
+          title: '登录提醒',
+          content: '您还未登录，是否进行微信授权登录',
+          confirmText: '是',
+          cancelText: '否',
+          success(res) {
+            if(res.confirm){
+              getUserProfile().then(()=>{
+                wx.navigateTo({
+                  url: '/pages/post/index'
+                });
+              })
+            }
+          }
+        });
+      }
+    },
     switchTab(e) {
       const data = e.currentTarget.dataset
       const url = data.path

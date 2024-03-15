@@ -1,5 +1,4 @@
-import { myRequest } from '../../utils/service'
-
+import getUserProfile from '../../utils/getUserInfo'
 Page({
   data: {
     userInfo: {},
@@ -18,49 +17,31 @@ Page({
         selected: 1,
       })
     }
+    const token = wx.getStorageSync('token');
+    if(token){
+      const userInfo = getApp().globalData.userInfo;
+      this.setData({
+        userInfo: userInfo,
+        token: token
+      });
+    }
   },
 
-  getUserProfile(e) {
-    wx.showLoading({
-      title: '正在登录...',
-      mask: true,
-    })
-
-    wx.getUserProfile({
-      desc: '获取用户信息',
-      success: (res) => {
-        let username = res.userInfo.nickName
-        let headPic = res.userInfo.avatarUrl
-
-        wx.login({
-          success: async (res) => {
-            if (res.errMsg === 'login:ok') {
-              myRequest({
-                url: '/users',
-                method: 'POST',
-                data: { code: res.code, username: username, headPic: headPic },
-              }).then((res) => {
-                wx.setStorageSync('token', res.data.openid)
-              })
-            }
-          },
-        })
-
-        this.setData({
-          userInfo: res.userInfo,
-          token: true,
-        })
-      },
-      fail: (res) => {
-        console.log('授权失败', res)
-        wx.showToast({
-          icon: 'error',
-          title: '获取用户失败',
-        })
-        wx.hideLoading()
-      },
-    })
+  // 调用getUserProfile函数
+  getUserInfo() {
+    getUserProfile().then(() => {
+      const token = wx.getStorageSync('token');
+      const userInfo = getApp().globalData.userInfo;
+      this.setData({
+        userInfo: userInfo,
+        token: token
+      });
+    }).catch((error) => {
+      console.error('获取用户信息失败', error);
+      // 处理获取用户信息失败的情况
+    });
   },
+  
 
   loginout() {
     this.setData({

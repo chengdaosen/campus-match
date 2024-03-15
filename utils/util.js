@@ -22,7 +22,7 @@ function formatNumber(n) {
 }
 
 /**
- * 封封微信的的request
+ * 封装微信的的request
  */
 function request(url, data = {}, method = 'GET') {
   return new Promise(function (resolve, reject) {
