@@ -5,6 +5,9 @@
     "include": []
   },
   "setting": {
+    "useCompilerPlugins": [
+      "sass"
+    ],
     "bundle": false,
     "userConfirmedBundleSwitch": false,
     "urlCheck": true,

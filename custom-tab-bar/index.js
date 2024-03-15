@@ -15,7 +15,7 @@ Component({
         selectedIconPath: '../assets/icon/首页点击.png',
       },
       {
-        pagePath: '/pages/my/index',
+        pagePath: '/pages/mine/index',
         text: '我的',
         iconPath: '../assets/icon/我的.png',
         selectedIconPath: '../assets/icon/我的点击.png',

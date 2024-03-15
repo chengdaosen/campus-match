@@ -5,7 +5,6 @@
   bind:search="onSearch"
   bind:cancel="onCancel"
 />
-
 <view class="banner">
   <swiper
     indicator-dots="true"
@@ -21,13 +20,3 @@
     </swiper-item>
   </swiper>
 </view>
-<view class="post-list">
-  <block wx:for="{{ posts }}" wx:key="index">
-    <view class="post">
-      <image class="avatar" src="{{ item.head_pic }}"></image>
-      <view class="content">{{ item.content }}</view>
-    </view>
-  </block>
-  <view class="no-more">我是有底线的呦~</view>
-</view>
-
