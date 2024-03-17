@@ -18,7 +18,7 @@
         </view>
       </view>
       <view wx:else class="text-center">
-        <image class="avatar png" bind:tap="gotoAuthPage" src="../../assets/images/default-avatar.jpg" mode="acceptFill"></image>
+        <image class="avatar png" bind:tap="gotoAuthPage" src="../../assets/image/未登录头像.jpg" mode="acceptFill"></image>
         <navigator url="../auth/index" class="nickname text-xl margin-top-sm">请登录</navigator>
       </view>
       <image src="{{ defaultProfileWaveImagePath }}" mode="scaleToFill" class="gif-wave"></image>

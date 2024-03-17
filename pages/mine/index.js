@@ -24,6 +24,12 @@ Page({
    * onShow
    */
   onShow() {
+        // 在页面显示时修改底部导航栏状态
+        if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+          this.getTabBar().setData({
+            selected: 1,
+          })
+        }
     this.setData({appGlobalData: APP.globalData});
     if (this.data.appGlobalData.isAuth) this.refreshUserInfo();
   },
