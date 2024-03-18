@@ -1,6 +1,6 @@
 .banner {
   width: 100%;
-  height: 350rpx;
+  height: 450rpx;
   background-color: rgb(245,245,245);
   padding-bottom: 30rpx;
   padding-top:30rpx

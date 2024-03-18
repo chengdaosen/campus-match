@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/index/index", "pages/my/index", "pages/mine/index", "pages/post/index"],
+  "pages": ["pages/index/index", "pages/my/index",  "pages/post/index","pages/about/index"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0061b0",
@@ -17,7 +17,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/mine/index",
+        "pagePath": "pages/my/index",
         "text": "我的"
       }
     ]

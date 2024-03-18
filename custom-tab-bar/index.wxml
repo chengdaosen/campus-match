@@ -13,7 +13,7 @@
       <image src="../assets/icon/添加.png" class="img_icon" />
     </view>
   </navigator>
-  <view bindtap="switchTab" data-path="/pages/mine/index" data-index="1">
+  <view bindtap="switchTab" data-path="/pages/my/index" data-index="1">
     <image
       class="imgBox"
       src="{{ selected == 1 ? list[1].selectedIconPath : list[1].iconPath }}"

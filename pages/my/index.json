@@ -1,5 +1,10 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "我的",
-  "backgroundColor": "#f5f5f5"
-} 
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "我",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "van-notify": "@vant/weapp/notify/index"
+  }
+}

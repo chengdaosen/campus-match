@@ -18,5 +18,8 @@
     <swiper-item>
       <image src="/assets/image/轮播图2.png" style="border-radius: 10px"></image>
     </swiper-item>
+    <swiper-item>
+      <image src="/assets/image/轮播图3.jpg" style="border-radius: 10px"></image>
+    </swiper-item>
   </swiper>
 </view>

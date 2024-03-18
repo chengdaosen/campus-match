@@ -1,0 +1,35 @@
+<view class="margin-xs bg-white padding-xl">
+    <view class="margin-top-sm margin-bottom-sm">
+      <view class="text-center" style="font-size: 50rpx; line-height: 1.2em"
+        >校园拼伴</view
+      >
+      <view
+        class="text-center margin-top-xs"
+        style="font-size: 28rpx; line-height: 1.2em; color: #666"
+        >一起拼伴，乐享校园</view
+      >
+    </view>
+    <view class="margin-top-lg">
+      <view class="title">小程序简介</view>
+      <view class="content">
+        <view>
+          欢迎使用“校园拼伴”微信小程序！我所设计的小程序旨在解决在校大学生日常学习、生活和社团活动中所面临的合适伙伴寻找难题。无论是远行、课余娱乐、体育运动还是学术竞赛，都需要合适的伙伴。传统的寻伙伴方式效率低下且繁琐，导致时间和金钱浪费。因此，我开发了“校园拼伴”微信小程序，为在校大学生提供一个快速、方便和直观的平台，帮助他们迅速找到志同道合的伙伴，从而减少独自行动的不便。
+        </view>
+        <view class="subtitle">功能特点</view>
+        <view>
+          <view class="list-item">
+            <view>快速发布拼伴信息：学生可以轻松快速地发布拼伴信息，包括拼车、桌游、运动伙伴、学术合作等。只需填写简单信息，即可向其他用户展示你的需求或兴趣</view>
+          </view>
+          <view class="list-item">
+            <view>互相沟通：用户之间可以通过小程序内的即时消息功能进行沟通。你可以与其他用户协商并制定计划，以便更好地协同合作。这样可以更加方便地了解彼此的需求和安排活动。</view>
+          </view>
+          <view class="list-item">
+            <view>提高生活质量：我们的小程序旨在提高学生的生活质量，降低伙伴寻找的难度，促进更多社交互动，使校园生活更加多姿多彩。</view>
+          </view>
+        </view>
+        <view>欢迎您加入“校园拼伴”微信小程序，与志同道合的伙伴一起度过愉快的时光！</view>
+        <view>电子邮箱: chengdaoseng@gmail.com</view>
+        <view>©2024 chengdaoseng</view>
+      </view>
+    </view>
+  </view>
