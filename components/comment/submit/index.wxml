@@ -1,0 +1,16 @@
+
+<view class='wrap'>
+    <view class='header'>
+        <view class='header-icon {{type=="album"?"square":""}}'>
+            <image src='{{logo}}'></image>
+        </view>
+        <view class='header-text'>
+            <text>{{title}}</text>
+        </view>
+    </view>
+    <view class='feedback-cont'>
+        <textarea auto-focus="true" value="{{replyName}}" maxlength="200" bindinput="textareaCtrl" placeholder-style="color:#999;" placeholder="一起学习，一起进步" />
+        <view class='fontNum'>{{content.length}}/200</view>
+    </view>
+    <view class='feedback-btn' bindtap='commentSubmit'>提交</view>
+</view>

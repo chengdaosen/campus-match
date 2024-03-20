@@ -1,12 +1,22 @@
 <!-- index.wxml -->
 <form class="container" bindsubmit="formSubmit" id="1" bindreset="formReset">
   <textarea
+    class="content"
     auto-focus
     value="{{ postContent }}"
     bindinput="handleInput"
     auto-height
     placeholder="请输入帖子内容"
-  />
-  <view style="height: 100rpx"></view>
-  <button class="btn" formType="submit" disabled="{{ !postContent }}">发布</button>
+  ></textarea>
+  <van-divider />
+  <van-cell title="{{HosName}}" is-link  bind:click="showPopup" />
+  <van-popup  position="bottom"
+  custom-style="height: 40%" show="{{ show }}" bind:close="onClose">  
+  <van-picker
+  show-toolbar
+  columns="{{HosList}}"
+  bind:cancel="onCancel"
+  bind:confirm="onConfirm"/>
+</van-popup>
+  <van-button type="info" round size="large" class="btn" bind:click="formSubmit" disabled="{{!postContent}}">发布</van-button>
 </form>

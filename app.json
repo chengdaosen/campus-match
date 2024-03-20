@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/index/index", "pages/my/index",  "pages/post/index","pages/about/index"],
+  "pages": ["pages/index/index", "pages/my/index",  "pages/post/index","pages/about/index","components/comment/index","components/comment/submit/index"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0061b0",
@@ -31,6 +31,9 @@
     "van-button": "@vant/weapp/button/index",
     "van-search": "@vant/weapp/search/index",
     "van-nav-bar": "@vant/weapp/nav-bar/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-divider": "@vant/weapp/divider/index"
   }
 }

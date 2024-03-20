@@ -1,4 +1,4 @@
-var api = require('../config/api.js')
+var api = require('../config/api.js');
 
 function formatTime(date) {
   var year = date.getFullYear()

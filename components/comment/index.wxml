@@ -1,0 +1,46 @@
+<!-- 评论组件 Component -->
+<view class="commentComponent extra-class">
+  <block wx:if="{{commentList.length>0}}">
+    <!-- 评论模块 -->
+    <block wx:for="{{commentList}}" wx:for-item="item" wx:for-index="index" wx:key="idx">
+      <view class="commentItem" catchtap="_goToReply" data-contentid="{{item.id}}" data-replyid="{{item.id}}" data-battle-tag="{{item.displayName}}">
+        <view class="titleWrap">
+          <image class="logo" src="{{item.headPortrait||'这里替换默认图'}}"></image>
+          <view class="authorWrap">
+            <view class="author">{{item.displayName}}</view>
+            <view class="time">{{item.createTime}}</view>
+          </view>
+          <view class="starWrap" catchtap="_clickLike" data-index="{{index}}" data-like="{{item.like}}" data-contentid="{{item.id}}" data-topicid="{{item.topicId}}">
+            <text class="count">{{item.likeTotal||""}}</text>
+            <view class="workSprite icon {{item.like?'starIconHasClick':'starIcon'}}"></view>
+          </view>
+        </view>
+        <view class="text">
+          {{item.contentText}}
+        </view>
+      </view>
+      <!-- 评论的评论 -->
+      <block wx:for="{{item.replyContents}}" wx:for-item="itemReply" wx:for-index="indexReply" wx:key="idxReply">
+        <view class="commentItem commentItemReply" catchtap="_goToReply" data-contentid="{{itemReply.id}}" data-replyid="{{item.id}}" data-battle-tag="{{itemReply.displayName}}">
+          <view class="titleWrap">
+            <image class="logo" src="{{itemReply.headPortrait||'这里替换默认图'}}"></image>
+            <view class="authorWrap">
+              <view class="author">{{itemReply.displayName}}</view>
+              <view class="time">{{itemReply.createTime}}</view>
+            </view>
+            <view class="starWrap" catchtap="_clickLike" data-index="{{index}}" data-index-reply="{{indexReply}}" data-like="{{itemReply.like}}" data-contentid="{{itemReply.id}}" data-topicid="{{itemReply.topicId}}">
+              <text class="count">{{itemReply.likeTotal||""}}</text>
+              <view class="workSprite icon {{itemReply.like?'starIconHasClick':'starIcon'}}"></view>
+            </view>
+          </view>
+          <view class="text">
+            {{itemReply.contentText}}
+          </view>
+        </view>
+      </block>
+    </block>
+    <!-- <block wx:if="{{isOver}}">
+      <view class="more">评论加载完成</view>
+    </block> -->
+  </block>
+</view>

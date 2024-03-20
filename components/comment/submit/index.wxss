@@ -1,0 +1,71 @@
+/* components/plugins/comment/submit/index.wxss */
+
+/* pages/my/feedback.wxss */
+
+.wrap {
+  width: 670rpx;
+  margin: 0 auto;
+}
+.header {
+  padding: 25rpx 0;
+}
+.header-icon {
+  height: 80rpx;
+  width: 80rpx;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 25rpx;
+}
+.header-icon image{
+  height: 76rpx;
+  border:2px solid #f0f0f0;
+  border-radius: 38rpx;
+  width: 76rpx;
+  vertical-align: top;
+}
+.header-icon.square image {
+  border-radius: 8px;
+}
+.header-text {
+  display: inline-block;
+  vertical-align: top;
+  width: 565rpx;
+  color: #313234;
+  font-size: 32rpx;
+  line-height: 40rpx;
+}
+
+.feedback-cont {
+  width: 630rpx;
+  height: 360rpx;
+  padding:25rpx;
+  border-radius: 20rpx;
+  background: #eff1f5;
+}
+.feedback-cont textarea{
+  font-size: 14px;
+  line-height: 20px;
+  color: #000;
+  width: 100%;
+  height: 280rpx;
+  word-break:break-all;
+}
+.fontNum {
+  color: #a1a8b3;
+  text-align: right;
+  line-height: 30rpx;
+  font-size: 24rpx;
+}
+
+.feedback-btn {
+  width: 100%;
+  height: 80rpx;
+  background: #00aeff;
+  text-align: center;
+  line-height: 80rpx;
+  color: #fff;
+  font-size: 36rpx;
+  float: right;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+}
