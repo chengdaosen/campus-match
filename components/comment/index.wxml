@@ -1,46 +1,54 @@
 <!-- 评论组件 Component -->
-<view class="commentComponent extra-class">
-  <block wx:if="{{commentList.length>0}}">
+<view class="commentComponent">
+  <block wx:if="{{ commentList.length > 0 }}">
     <!-- 评论模块 -->
-    <block wx:for="{{commentList}}" wx:for-item="item" wx:for-index="index" wx:key="idx">
-      <view class="commentItem" catchtap="_goToReply" data-contentid="{{item.id}}" data-replyid="{{item.id}}" data-battle-tag="{{item.displayName}}">
+    <block
+      wx:for="{{ commentList }}"
+      wx:for-item="item"
+      wx:for-index="index"
+      wx:key="idx"
+    >
+      <view
+        class="commentItem"
+        catchtap="_goToReply"
+        data-contentid="{{ item.id }}"
+        data-replyid="{{ item.id }}"
+        data-battle-tag="{{ item.username }}"
+      >
         <view class="titleWrap">
-          <image class="logo" src="{{item.headPortrait||'这里替换默认图'}}"></image>
+          <image class="logo" src="{{ item.head_pic }}"></image>
           <view class="authorWrap">
-            <view class="author">{{item.displayName}}</view>
-            <view class="time">{{item.createTime}}</view>
-          </view>
-          <view class="starWrap" catchtap="_clickLike" data-index="{{index}}" data-like="{{item.like}}" data-contentid="{{item.id}}" data-topicid="{{item.topicId}}">
-            <text class="count">{{item.likeTotal||""}}</text>
-            <view class="workSprite icon {{item.like?'starIconHasClick':'starIcon'}}"></view>
+            <view class="author">{{ item.username }}</view>
+            <view class="time">{{ item.createTime }}</view>
           </view>
         </view>
         <view class="text">
-          {{item.contentText}}
+          {{ item.content }}
         </view>
       </view>
-      <!-- 评论的评论 -->
-      <block wx:for="{{item.replyContents}}" wx:for-item="itemReply" wx:for-index="indexReply" wx:key="idxReply">
-        <view class="commentItem commentItemReply" catchtap="_goToReply" data-contentid="{{itemReply.id}}" data-replyid="{{item.id}}" data-battle-tag="{{itemReply.displayName}}">
-          <view class="titleWrap">
-            <image class="logo" src="{{itemReply.headPortrait||'这里替换默认图'}}"></image>
-            <view class="authorWrap">
-              <view class="author">{{itemReply.displayName}}</view>
-              <view class="time">{{itemReply.createTime}}</view>
-            </view>
-            <view class="starWrap" catchtap="_clickLike" data-index="{{index}}" data-index-reply="{{indexReply}}" data-like="{{itemReply.like}}" data-contentid="{{itemReply.id}}" data-topicid="{{itemReply.topicId}}">
-              <text class="count">{{itemReply.likeTotal||""}}</text>
-              <view class="workSprite icon {{itemReply.like?'starIconHasClick':'starIcon'}}"></view>
-            </view>
-          </view>
-          <view class="text">
-            {{itemReply.contentText}}
-          </view>
+
+      <view class="tool">
+        <view class="tool-item" catchtap="onLikeTap" data-post-id="{{ item.id }}">
+          <block wx:if="{{ usersLikeList.results.includes(item.id) }}">
+            <van-icon size="25" name="good-job" /><text
+              >{{ item.likeTotal }}</text
+            >
+          </block>
+          <block wx:else>
+            <van-icon size="25" name="good-job-o" />
+          </block>
+          <text wx:if="{{ item.likeTotal > 0 }}"
+            >{{ item.likeTotal }}</text
+          >
         </view>
-      </block>
+
+        <view class="tool-item" catchtap="onCommentTap" data-post-id="{{ item.id }}">
+          <van-icon size="25" name="comment-o" />
+        </view>
+        <view class="tool-item" catchtap="onCollectionTap" data-post-id="{{ item.id }}">
+          <van-icon size="25" name="warn-o" />
+        </view>
+      </view>
     </block>
-    <!-- <block wx:if="{{isOver}}">
-      <view class="more">评论加载完成</view>
-    </block> -->
   </block>
 </view>

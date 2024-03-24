@@ -1,5 +1,6 @@
 const { myRequest } = require('../../utils/service')
-
+// import myRequest from '../../utils/service'
+import getCurrentDateTime from '../../utils/formatTime';
 // index.js
 Page({
   data: {
@@ -19,8 +20,6 @@ Page({
     this.setData({ show: false });
   },
   onConfirm(event) {
-    // const { picker, value, index } = event.detail;
-    //Toast(`当前值：${value}, 当前索引：${index}`);
     this.setData({ HosName: event.detail.value, show: false });
   },
   // 文本域输入事件处理函数
@@ -30,11 +29,15 @@ Page({
     })
   },
   formSubmit() {
+    const createTime = getCurrentDateTime()
+    console.log(createTime)
     // 获取文本域的内容
     const content = this.data.postContent
     const openid = wx.getStorageSync('token')
-    const tag = this.data.HosName
-    console.log(tag)
+    let tag = ''
+    if(this.data.HosName != '选择标签'){
+      tag = this.data.HosName
+    }
     // 发送 POST 请求到后端接口
     myRequest({
       url: '/publish',
@@ -42,7 +45,8 @@ Page({
       data: {
         content: content,
         openid: openid,
-        tag:tag
+        tag:tag,
+        createTime:createTime
       },
     }).then((res) => {
       console.log(res)

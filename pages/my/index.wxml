@@ -11,17 +11,11 @@
 
     <view
       class="UCenter-bg"
-      style="background-image:url(../../assets/image/default-cover.jpg)"
+      style="background-image: url(../../assets/image/default-cover.jpg)"
     >
       <view wx:if="{{ token }}" class="text-center">
-        <image
-          class="avatar"
-          src="{{ userInfo.avatarUrl }}"
-          mode="acceptFill"
-        ></image>
-        <view class="nickname text-xl margin-top-sm">{{
-          userInfo.nickName
-        }}</view>
+        <image class="avatar" src="{{ userInfo.avatarUrl }}" mode="acceptFill"></image>
+        <view class="nickname text-xl margin-top-sm">{{ userInfo.nickName }}</view>
         <view class="bio" wx:if="{{ appGlobalData.userInfo.bio }}">
           <text>{{ appGlobalData.userInfo.bio }}</text>
         </view>
@@ -33,9 +27,7 @@
           src="../../assets/image/未登录头像.jpg"
           mode="acceptFill"
         ></image>
-        <view  class="nickname text-xl margin-top-sm"
-          >点击进行微信授权登录</view
-        >
+        <view class="nickname text-xl margin-top-sm">点击进行微信授权登录</view>
       </view>
       <image
         src="../../assets/image/profile-wave.gif"
@@ -62,7 +54,7 @@
           appGlobalData.isAuth ? appGlobalData.userInfo.got_post_thumb_up_num : '-'
         }}</view>
         <view class="margin-top-sm">
-          <text class="cuIcon-appreciatefill"></text> 被赞
+          <text class="cuIcon-appreciatefill"></text> 点赞
         </view>
       </view>
     </view>
@@ -138,7 +130,7 @@
         <text class="text-gray text-sm">在线</text>
       </view>
     </button>
-   
+
     <button class="cu-item arrow" open-type="feedback">
       <view class="content">
         <text class="cuIcon-writefill text-cyan"></text>
@@ -167,13 +159,9 @@
         <text class="text-red">退出登录</text>
       </view>
     </view>
-
   </view>
 
   <view id="section-copyright">
-    <view
-      class="text-center text-gray padding-bottom-xl padding-top-lg"
-    >
-  </view>
+    <view class="text-center text-gray padding-bottom-xl padding-top-lg"> </view>
   </view>
 </view>

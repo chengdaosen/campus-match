@@ -34,6 +34,7 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-picker": "@vant/weapp/picker/index",
     "van-cell": "@vant/weapp/cell/index",
-    "van-divider": "@vant/weapp/divider/index"
+    "van-divider": "@vant/weapp/divider/index",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

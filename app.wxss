@@ -1,3 +1,4 @@
 /**app.wxss**/
 @import "./assets/styles/colorui/main.wxss";
 @import "./assets/styles/colorui/icon.wxss";
+@import "./components/comment/index.wxss"

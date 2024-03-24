@@ -43,7 +43,6 @@ Page({
       });
     }).catch((error) => {
       console.error('获取用户信息失败', error);
-      // 处理获取用户信息失败的情况
     });
   },
   /**

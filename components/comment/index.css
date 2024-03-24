@@ -91,6 +91,14 @@
   height: 80rpx;
 }
 
+.tool-item text {
+  width: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  vertical-align: top;
+  font-size: medium;
+}
+
 .commentComponent .commentItem .titleWrap .starWrap {
   display: inline-block;
   position: absolute;

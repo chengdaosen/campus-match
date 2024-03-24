@@ -2,13 +2,29 @@ const { myRequest } = require('../../utils/service')
 Page({
   data: {
     value: '',
-    commentList: [],  //帖子列表
+    usersLikeList: [],
+    commentList: [], //帖子列表
     commentTypeIndex: 0, //评论类型选择的index
-    commentType: ["最热", "最新"],
-    refresh: false
+    commentType: ['最热', '最新'],
+    refresh: false,
   },
   onSearch() {
     console.log('搜索了')
+  },
+  //获取用户喜欢的帖子
+  getUsersLike() {
+    debugger
+    const openId = wx.getStorageSync('token')
+    myRequest({
+      url: '/usersLike',
+      method: 'POST',
+      data: { openId },
+    }).then((res) => {
+      console.log('res.data', res.data)
+      this.setData({
+        usersLikeList: res.data,
+      })
+    })
   },
   //获取帖子内容
   getPosts() {
@@ -18,8 +34,8 @@ Page({
     }).then((res) => {
       this.setData({
         commentList: res.data,
-        refresh: true
-      });
+        refresh: true,
+      })
     })
   },
   // 页面显示时触发
@@ -33,16 +49,16 @@ Page({
     }
   },
   //更新评论类型数据请求
-  bindPickerChange (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value);
-    let index = e.detail.value;
+  bindPickerChange(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    let index = e.detail.value
     //查看评论类型对应的key
-    let commentKey = ["like", "time"];
+    let commentKey = ['like', 'time']
     this.setData({
-        commentTypeIndex: index,
-        currentType: commentKey[index],
-        //isOver: false,
-        p: 1
+      commentTypeIndex: index,
+      currentType: commentKey[index],
+      //isOver: false,
+      p: 1,
     })
-},
+  },
 })

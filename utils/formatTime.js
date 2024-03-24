@@ -1,56 +1,15 @@
-/**
- * 格式化时间
- * @param date
- * @returns {string}
- */                                                                                     
-const formatTime = date => {
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  const second = date.getSeconds();
+export default function getCurrentDateTime() {
+  const currentTime = new Date(); // 获取当前时间
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-};
+  // 获取年、月、日、时、分、秒
+  const year = currentTime.getFullYear();
+  const month = (currentTime.getMonth() + 1).toString().padStart(2, '0'); // 月份从0开始，需要加1，并确保两位数格式
+  const day = currentTime.getDate().toString().padStart(2, '0'); // 确保两位数格式
+  const hours = currentTime.getHours().toString().padStart(2, '0'); // 确保两位数格式
+  const minutes = currentTime.getMinutes().toString().padStart(2, '0'); // 确保两位数格式
+  const seconds = currentTime.getSeconds().toString().padStart(2, '0'); // 确保两位数格式
 
-/**
-* 格式化数字
-* @param n
-* @returns {string}
-*/
-const formatNumber = n => {
-  n = n.toString();
-  return n[1] ? n : '0' + n;
-};
-
-/**
-* 部署格式化日期工具
-* @param date
-* @param fmt
-* @returns {*}
-*/
-function timeFormat(date, fmt) {
-  var o = {
-      "M+": date.getMonth() + 1,                 //月份
-      "d+": date.getDate(),                    //日
-      "h+": date.getHours(),                   //小时
-      "m+": date.getMinutes(),                 //分
-      "s+": date.getSeconds(),                 //秒
-      "q+": Math.floor((date.getMonth() + 3) / 3), //季度
-      "S": date.getMilliseconds()             //毫秒
-  };
-  if (/(y+)/.test(fmt))
-      fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
-  for (var k in o)
-      if (new RegExp("(" + k + ")").test(fmt))
-          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-  return fmt;
+  // 组合成 YYYY-MM-DD HH:MM:SS 格式
+  const formattedTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  return formattedTime;
 }
-
-
-
-module.exports = {
-  formatTime,
-  timeFormat,
-};

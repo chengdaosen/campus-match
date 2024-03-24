@@ -20,13 +20,16 @@ export default function getUserProfile() {
                 url: '/users',
                 method: 'POST',
                 data: { code: res.code, username: username, headPic: headPic },
-              }).then((res) => {
-                wx.setStorageSync('token', res.data.openid)
-                // 在获取用户信息成功后执行后续代码
-                resolve();
-              }).catch((error) => {
-                reject(error);
-              });
+              })
+                .then((res) => {
+                  getApp().globalData.openId = res.data.openid
+                  wx.setStorageSync('token', res.data.openid)
+                  // 在获取用户信息成功后执行后续代码
+                  resolve()
+                })
+                .catch((error) => {
+                  reject(error)
+                })
             }
           },
         })
@@ -38,8 +41,8 @@ export default function getUserProfile() {
           title: '获取用户失败',
         })
         wx.hideLoading()
-        reject(res);
+        reject(res)
       },
     })
-  });
+  })
 }

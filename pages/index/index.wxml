@@ -25,10 +25,19 @@
 </view>
 <view class="writeCommentWrap">
   <text class="comment">精彩评论</text>
-  <picker class="write" bindchange="bindPickerChange" value="{{commentTypeIndex}}" range="{{commentType}}">
-    {{commentType[commentTypeIndex]}}
+  <picker
+    class="write"
+    bindchange="bindPickerChange"
+    value="{{ commentTypeIndex }}"
+    range="{{ commentType }}"
+  >
+    {{ commentType[commentTypeIndex] }}
     <view class="icon_arrow"></view>
   </picker>
 </view>
-
-<comment commentList="{{commentList}}" refresh="{{refresh}}"></comment>
+<comment
+  bind:customEvent="getUsersLike"
+  usersLikeList="{{ usersLikeList }}"
+  commentList="{{ commentList }}"
+/>
+<view style="height: 51px"></view>
