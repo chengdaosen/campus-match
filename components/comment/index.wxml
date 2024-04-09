@@ -2,12 +2,7 @@
 <view class="commentComponent">
   <block wx:if="{{ commentList.length > 0 }}">
     <!-- 评论模块 -->
-    <block
-      wx:for="{{ commentList }}"
-      wx:for-item="item"
-      wx:for-index="index"
-      wx:key="idx"
-    >
+    <block wx:for="{{ commentList }}" wx:for-item="item" wx:for-index="index" wx:key="id">
       <view
         class="commentItem"
         catchtap="_goToReply"
@@ -26,25 +21,45 @@
           {{ item.content }}
         </view>
       </view>
+      <view wx:if="{{ item.tag }}" class="tag">
+        <block wx:if="{{ item.tag == '🚗拼车出行' }}">
+          <van-tag size="large" color="#f2826a">{{ item.tag }}</van-tag>
+        </block>
+        <block wx:elif="{{ item.tag == '🏀运动搭子' }}">
+          <van-tag size="large" color="#7232dd">{{ item.tag }}</van-tag>
+        </block>
+        <block wx:elif="{{ item.tag == '🎈课余娱乐' }}">
+          <van-tag size="large" color="#1cbbb4">{{ item.tag }}</van-tag>
+        </block>
+        <block wx:elif="{{ item.tag == '📚共同学习' }}">
+          <van-tag size="large" color="#fbbd08">{{ item.tag }}</van-tag>
+        </block>
+        <block wx:elif="{{ item.tag == '🏆竞赛伙伴' }}">
+          <van-tag size="large" color="#6739b6">{{ item.tag }}</van-tag>
+        </block>
+        <block wx:elif="{{ item.tag == '😎其他' }}">
+          <van-tag size="large" color="#d2f1f0">{{ item.tag }}</van-tag>
+        </block>
+      </view>
 
       <view class="tool">
+        <!-- 点赞 -->
         <view class="tool-item" catchtap="onLikeTap" data-post-id="{{ item.id }}">
-          <block wx:if="{{ usersLikeList.results.includes(item.id) }}">
-            <van-icon size="25" name="good-job" /><text
-              >{{ item.likeTotal }}</text
-            >
+          <block wx:if="{{ item.likeStatus }}">
+            <van-icon size="25" color="rgb(12,124,216)" name="good-job" /><text>{{
+              item.likeTotal
+            }}</text>
           </block>
           <block wx:else>
             <van-icon size="25" name="good-job-o" />
+            <text wx:if="{{ item.likeTotal > 0 }}">{{ item.likeTotal }}</text>
           </block>
-          <text wx:if="{{ item.likeTotal > 0 }}"
-            >{{ item.likeTotal }}</text
-          >
         </view>
-
+        <!-- 评论 -->
         <view class="tool-item" catchtap="onCommentTap" data-post-id="{{ item.id }}">
-          <van-icon size="25" name="comment-o" />
+          <van-icon size="25" name="comment-o" />{{ usersLikeList }}
         </view>
+        <!-- 举报 -->
         <view class="tool-item" catchtap="onCollectionTap" data-post-id="{{ item.id }}">
           <van-icon size="25" name="warn-o" />
         </view>

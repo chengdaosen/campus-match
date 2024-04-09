@@ -4,42 +4,57 @@ Page({
     value: '',
     usersLikeList: [],
     commentList: [], //帖子列表
-    commentTypeIndex: 0, //评论类型选择的index
+    commentTypeIndex: 1, //评论类型选择的index
     commentType: ['最热', '最新'],
-    refresh: false,
   },
   onSearch() {
-    console.log('搜索了')
+    console.log('搜索', this.data.value)
+    this.getPosts()
+  },
+  onChange(e) {
+    this.setData({
+      value: e.detail,
+    })
   },
   //获取用户喜欢的帖子
   getUsersLike() {
-    debugger
     const openId = wx.getStorageSync('token')
     myRequest({
       url: '/usersLike',
       method: 'POST',
       data: { openId },
     }).then((res) => {
-      console.log('res.data', res.data)
+      this.getPosts()
+      // this.triggerEvent('toUsersLikeListUpdated', { usersLikeList: res.data })
       this.setData({
-        usersLikeList: res.data,
+        usersLikeList: res.data.results,
       })
     })
   },
   //获取帖子内容
   getPosts() {
+    const openId = wx.getStorageSync('token')
+    const params = {
+      commentTypeIndex: this.data.commentTypeIndex,
+      openId: openId,
+      keyword: this.data.value,
+    }
     myRequest({
       url: '/posts',
-      method: 'GET',
+      method: 'POST',
+      data: params,
     }).then((res) => {
       this.setData({
         commentList: res.data,
-        refresh: true,
       })
     })
   },
   // 页面显示时触发
   onShow() {
+    const openId = wx.getStorageSync('token')
+    if (openId) {
+      this.getUsersLike()
+    }
     this.getPosts()
     // 在页面显示时修改底部导航栏状态
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
@@ -52,13 +67,9 @@ Page({
   bindPickerChange(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     let index = e.detail.value
-    //查看评论类型对应的key
-    let commentKey = ['like', 'time']
     this.setData({
       commentTypeIndex: index,
-      currentType: commentKey[index],
-      //isOver: false,
-      p: 1,
     })
+    this.getPosts()
   },
 })

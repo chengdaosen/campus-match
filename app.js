@@ -2,10 +2,11 @@
 App({
   globalData: {
     userInfo: {
-      avatarUrl: '',
-      nickName: '',
+      head_pic: '',
+      username: '',
     },
     openId: '',
+    usersLike: [],
   },
   onLaunch() {
     // 展示本地存储能力

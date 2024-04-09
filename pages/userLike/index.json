@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "comment": "../../components/comment"
+  },
+  "navigationBarTitleText": "我点赞的",
+  "backgroundColor": "#f5f5f5"
+}

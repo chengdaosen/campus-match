@@ -3,6 +3,7 @@
   placeholder="请输入搜索关键词"
   show-action
   bind:search="onSearch"
+  bind:change="onChange"
   bind:cancel="onCancel"
 />
 <view class="banner">
@@ -18,13 +19,12 @@
     <swiper-item>
       <image src="/assets/image/轮播图2.png" style="border-radius: 10px"></image>
     </swiper-item>
-    <swiper-item>
+    <!-- <swiper-item>
       <image src="/assets/image/轮播图3.jpg" style="border-radius: 10px"></image>
-    </swiper-item>
+    </swiper-item> -->
   </swiper>
 </view>
 <view class="writeCommentWrap">
-  <text class="comment">精彩评论</text>
   <picker
     class="write"
     bindchange="bindPickerChange"
@@ -36,7 +36,7 @@
   </picker>
 </view>
 <comment
-  bind:customEvent="getUsersLike"
+  bind:toGetUsersLikeList="getUsersLike"
   usersLikeList="{{ usersLikeList }}"
   commentList="{{ commentList }}"
 />

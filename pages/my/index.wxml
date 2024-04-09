@@ -5,7 +5,7 @@
     <view wx:if="{{ token }}" class="btn-edit">
       <navigator url="../info/index" class="cu-btn sm round bg-white">
         <text class="icon cuIcon-skin margin-right-xs"></text>
-        <text class="text-sm">更新资料</text>
+        <text class="text-sm">修改资料</text>
       </navigator>
     </view>
 
@@ -14,8 +14,8 @@
       style="background-image: url(../../assets/image/default-cover.jpg)"
     >
       <view wx:if="{{ token }}" class="text-center">
-        <image class="avatar" src="{{ userInfo.avatarUrl }}" mode="acceptFill"></image>
-        <view class="nickname text-xl margin-top-sm">{{ userInfo.nickName }}</view>
+        <image class="avatar" src="{{ userInfo.head_pic }}" mode="acceptFill"></image>
+        <view class="nickname text-xl margin-top-sm">{{ userInfo.username }}</view>
         <view class="bio" wx:if="{{ appGlobalData.userInfo.bio }}">
           <text>{{ appGlobalData.userInfo.bio }}</text>
         </view>
@@ -23,7 +23,6 @@
       <view bindtap="getUserInfo" wx:else class="text-center">
         <image
           class="avatar png"
-          bind:tap="gotoAuthPage"
           src="../../assets/image/未登录头像.jpg"
           mode="acceptFill"
         ></image>
@@ -49,10 +48,8 @@
         }}</view>
         <view class="margin-top-sm"> <text class="cuIcon-commentfill"></text> 评论 </view>
       </view>
-      <view class="flex flex-sub flex-direction">
-        <view class="text-xxl text-blue">{{
-          appGlobalData.isAuth ? appGlobalData.userInfo.got_post_thumb_up_num : '-'
-        }}</view>
+      <view bindtap="toUserLike" class="flex flex-sub flex-direction">
+        <view class="text-xxl text-blue">{{ token ? usersLike.length : '-' }}</view>
         <view class="margin-top-sm">
           <text class="cuIcon-appreciatefill"></text> 点赞
         </view>

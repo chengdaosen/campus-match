@@ -73,6 +73,10 @@
   font-size: 20rpx;
 }
 
+.tag {
+  padding: 0 80rpx 20rpx 110rpx;
+}
+
 .tool {
   padding: 0 80rpx 20rpx 200rpx;
   display: flex;

@@ -1,0 +1,41 @@
+<form catchsubmit="formSubmit">
+  <van-cell title="头像" is-link center>
+    <button class="avatar" bindtap="chooseavatar">
+      <image class="avatar-img" src="{{ avatarUrl }}" mode="aspectFit"></image>
+    </button>
+  </van-cell>
+  <van-field
+    type="nickname"
+    label="昵称"
+    model:value="{{ username }}"
+    placeholder="请输入昵称"
+    clearable
+    input-align="right"
+  />
+  <picker
+    bindchange="bindPickerChange"
+    value="{{ genderIndex }}"
+    range="{{ genderArray }}"
+  >
+    <van-cell title="性别" value="{{ gender }}" is-link />
+  </picker>
+  <van-field
+    type="wechat"
+    label="微信号"
+    model:value="{{ wechat }}"
+    placeholder="请输入微信号"
+    clearable
+    input-align="right"
+  />
+  <van-field
+    type="wechat"
+    label="QQ号"
+    model:value="{{ qq }}"
+    placeholder="请输入QQ号"
+    clearable
+    input-align="right"
+  />
+  <view class="btn">
+    <van-button type="primary" block form-type="submit">保存</van-button>
+  </view>
+</form>

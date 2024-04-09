@@ -1,26 +1,33 @@
 const { myRequest } = require('../../utils/service')
 // import myRequest from '../../utils/service'
-import getCurrentDateTime from '../../utils/formatTime';
+import getCurrentDateTime from '../../utils/formatTime'
 // index.js
 Page({
   data: {
-    HosName:'选择标签',
-    HosList: ['🚗拼车出行','🎈课余娱乐','🏀运动搭子','📚共同学习','🏆竞赛伙伴','😎其他'],
-    show:false,
+    HosName: '选择标签',
+    HosList: [
+      '🚗拼车出行',
+      '🎈课余娱乐',
+      '🏀运动搭子',
+      '📚共同学习',
+      '🏆竞赛伙伴',
+      '😎其他',
+    ],
+    show: false,
     postContent: '',
     selectedOption: '',
   },
   showPopup() {
-    this.setData({ show: true });
+    this.setData({ show: true })
   },
   onClose() {
-    this.setData({ show: false });
+    this.setData({ show: false })
   },
   onCancel() {
-    this.setData({ show: false });
+    this.setData({ show: false })
   },
   onConfirm(event) {
-    this.setData({ HosName: event.detail.value, show: false });
+    this.setData({ HosName: event.detail.value, show: false })
   },
   // 文本域输入事件处理函数
   handleInput(e) {
@@ -35,7 +42,7 @@ Page({
     const content = this.data.postContent
     const openid = wx.getStorageSync('token')
     let tag = ''
-    if(this.data.HosName != '选择标签'){
+    if (this.data.HosName != '选择标签') {
       tag = this.data.HosName
     }
     // 发送 POST 请求到后端接口
@@ -45,8 +52,9 @@ Page({
       data: {
         content: content,
         openid: openid,
-        tag:tag,
-        createTime:createTime
+        tag: tag,
+        createTime: createTime,
+        likeTotal: 0,
       },
     }).then((res) => {
       console.log(res)

@@ -10,7 +10,6 @@ export default function getUserProfile() {
     wx.getUserProfile({
       desc: '获取用户信息',
       success: (res) => {
-        getApp().globalData.userInfo = res.userInfo
         let username = res.userInfo.nickName
         let headPic = res.userInfo.avatarUrl
         wx.login({
@@ -22,7 +21,11 @@ export default function getUserProfile() {
                 data: { code: res.code, username: username, headPic: headPic },
               })
                 .then((res) => {
+                  getApp().globalData.userInfo.username = res.data.username
+                  getApp().globalData.userInfo.head_pic = res.data.head_pic
+                  getApp().globalData.usersLike = res.data.usersLikes
                   getApp().globalData.openId = res.data.openid
+                  console.log('现在全局数据', getApp().globalData)
                   wx.setStorageSync('token', res.data.openid)
                   // 在获取用户信息成功后执行后续代码
                   resolve()

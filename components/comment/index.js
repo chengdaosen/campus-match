@@ -8,14 +8,26 @@ Component({
     commentList: {
       type: Array,
       value: [],
-      observer: '_updateCommentList',
+      // observer: '_updateCommentList',
     },
     usersLikeList: {
       type: Array,
-      value: [1, 1, 1],
+      value: [],
     },
   },
-
+  observers: {
+    usersLikeList(val) {
+      console.log('新usersLikeList值', val)
+      if (Array.isArray(val)) {
+        console.log('usersLikeList是数组')
+      } else {
+        console.log('usersLikeList不是数组，实际类型为:', typeof val)
+      }
+    },
+    commentList(val) {
+      console.log('新commentList值', val)
+    },
+  },
   /**
    * 组件的初始数据
    */
@@ -24,21 +36,15 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    toAddLikeTotal(e) {
-      const postId = e.currentTarget.dataset.postId
-      const openId = wx.getStorageSync('token')
-      myRequest({ url: '/posts/like', method: 'POST', data: { postId, openId } }).then(
-        (res) => {
-          console.log(res)
-        }
-      )
-    },
     onLikeTap(e) {
       const that = this
       const openId = wx.getStorageSync('token')
+      const postId = e.currentTarget.dataset.postId
       if (openId) {
-        that.toAddLikeTotal(e)
+        // 用户已登录，发送点赞请求
+        this.sendLikeRequest(postId, openId)
       } else {
+        // 用户未登录，提示登录并进行微信授权登录
         wx.showModal({
           title: '登录提醒',
           content: '您还未登录，是否进行微信授权登录',
@@ -46,22 +52,42 @@ Component({
           cancelText: '否',
           success(res) {
             if (res.confirm) {
+              // 用户确认登录，进行微信授权登录
               getUserProfile().then(() => {
-                that.toAddLikeTotal(e)
-                that.triggerEvent('customEvent')
+                const newOpenId = wx.getStorageSync('token')
+                // 发送点赞请求
+                that.sendLikeRequest(postId, newOpenId)
               })
             }
           },
         })
       }
     },
-    _updateCommentList(newCommentList) {
-      // 使用 setData 方法更新 commentList 数据
-      this.setData({
-        commentList: newCommentList,
+
+    sendLikeRequest(postId, openId) {
+      const that = this
+      myRequest({
+        url: '/posts/like',
+        method: 'POST',
+        data: { postId, openId },
       })
-      // 触发自定义事件，通知父组件评论列表已更新
-      this.triggerEvent('commentListChange', { commentList: newCommentList })
+        .then((res) => {
+          // 触发自定义事件
+          that.triggerEvent('toGetUsersLikeList')
+        })
+        .catch((error) => {
+          console.error('点赞请求发生错误：', error)
+          // 在这里添加适当的错误处理
+        })
     },
+
+    // _updateCommentList(newCommentList) {
+    //   // 使用 setData 方法更新 commentList 数据
+    //   this.setData({
+    //     commentList: newCommentList,
+    //   })
+    //   // 触发自定义事件，通知父组件评论列表已更新
+    //   this.triggerEvent('commentListChange', { commentList: newCommentList })
+    // },
   },
 })
