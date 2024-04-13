@@ -86,7 +86,13 @@ Page({
         if (res.confirm) {
           wx.showLoading({ title: '正在退出登录' })
           // 清除用户信息
-          getApp().globalData.userInfo = { username: '', head_pic: '' }
+          getApp().globalData.userInfo = {
+            username: '',
+            head_pic: '',
+            sex: '',
+            wecaht: '',
+            QQ: '',
+          }
           console.log('清除用户信息', getApp().globalData.userInfo)
           // 清除本地缓存中的token
           wx.removeStorage({

@@ -4,6 +4,9 @@ App({
     userInfo: {
       head_pic: '',
       username: '',
+      sex: '',
+      wechat: '',
+      qq: '',
     },
     openId: '',
     usersLike: [],
