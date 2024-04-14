@@ -37,6 +37,12 @@
         <block wx:elif="{{ item.tag == '🏆竞赛伙伴' }}">
           <van-tag size="large" color="#6739b6">{{ item.tag }}</van-tag>
         </block>
+        <block wx:elif="{{ item.tag == '📢社团活动' }}">
+          <van-tag size="large" color="#8dc63f">{{ item.tag }}</van-tag>
+        </block>
+        <block wx:elif="{{ item.tag == '🎲桌游拼搭' }}">
+          <van-tag size="large" color="#1cbbb4">{{ item.tag }}</van-tag>
+        </block>
         <block wx:elif="{{ item.tag == '😎其他' }}">
           <van-tag size="large" color="#d2f1f0">{{ item.tag }}</van-tag>
         </block>

@@ -24,6 +24,66 @@
     </swiper-item> -->
   </swiper>
 </view>
+<view class="tags-content">
+  <view class="tags">
+    <navigator
+      url="/pages/tag/index?param=拼车出行"
+      hover-class="navigator-hover"
+      open-type="navigate"
+    >
+      <van-icon name="logistics" size="30" />
+      <view class="text"> 拼车出行 </view>
+    </navigator>
+  </view>
+  <view class="tags">
+    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+      <van-icon name="smile-o" size="30" />
+      <view class="text"> 课余娱乐 </view>
+    </navigator>
+  </view>
+  <view class="tags">
+    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+      <van-icon name="sign" size="30" />
+      <view class="text"> 运动搭子 </view>
+    </navigator>
+  </view>
+  <view class="tags">
+    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+      <van-icon name="records-o" size="30" />
+      <view class="text"> 共同学习 </view>
+    </navigator>
+  </view>
+  <view class="tags">
+    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+      <van-icon name="medal-o" size="30" />
+      <view class="text"> 竞赛组队 </view>
+    </navigator>
+  </view>
+  <view class="tags">
+    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+      <van-icon name="hot-o" size="30" />
+      <view class="text"> 社团活动 </view>
+    </navigator>
+  </view>
+  <view class="tags">
+    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+      <van-icon name="friends-o" size="30" />
+      <view class="text"> 桌游拼搭 </view>
+    </navigator>
+  </view>
+  <view class="tags">
+    <navigator
+      style="width: 70px; height: 60px"
+      url="/pages/tag/index"
+      hover-class="navigator-hover"
+      open-type="navigate"
+    >
+      <van-icon style="padding-left: 10px" name="ellipsis" size="30" />
+      <view class="text"> 其他 </view>
+    </navigator>
+  </view>
+</view>
+
 <view class="writeCommentWrap">
   <picker
     class="write"

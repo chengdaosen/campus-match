@@ -1,0 +1,6 @@
+<!--pages/tag/index.wxml-->
+<comment
+  bind:toGetUsersLikeList="getUsersLike"
+  usersLikeList="{{ usersLikeList }}"
+  commentList="{{ commentList }}"
+/>

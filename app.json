@@ -6,6 +6,7 @@
     "pages/about/index",
     "pages/userLike/index",
     "pages/info/index",
+    "pages/tag/index",
     "components/comment/index",
     "components/comment/submit/index"
   ],

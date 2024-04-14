@@ -3,7 +3,7 @@
   height: 400rpx;
   background-color: rgb(245, 245, 245);
   padding-bottom: 30rpx;
-  padding-top: 30rpx
+  padding-top: 30rpx;
 }
 
 .banner swiper {
@@ -44,4 +44,32 @@
   border-right: 1px solid #507da7;
   border-bottom: 1px solid #507da7;
   transform: rotateZ(45deg);
+}
+
+.tags-content {
+  width: 90%;
+  margin: 10px auto 5px auto;
+  padding-top: 2px;
+  border-radius: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 150px;
+  justify-content: space-evenly;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  .tags {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: space-evenly;
+    width: 70px;
+    height: 60px;
+    .text {
+      margin-top: 5px;
+      text-align: center;
+    }
+    .van-icon {
+      padding-left: 10px;
+    }
+  }
 }

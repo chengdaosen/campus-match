@@ -80,14 +80,5 @@ Component({
           // 在这里添加适当的错误处理
         })
     },
-
-    // _updateCommentList(newCommentList) {
-    //   // 使用 setData 方法更新 commentList 数据
-    //   this.setData({
-    //     commentList: newCommentList,
-    //   })
-    //   // 触发自定义事件，通知父组件评论列表已更新
-    //   this.triggerEvent('commentListChange', { commentList: newCommentList })
-    // },
   },
 })
