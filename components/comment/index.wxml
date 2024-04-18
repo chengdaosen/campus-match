@@ -5,13 +5,17 @@
     <block wx:for="{{ commentList }}" wx:for-item="item" wx:for-index="index" wx:key="id">
       <view
         class="commentItem"
-        catchtap="_goToReply"
         data-contentid="{{ item.id }}"
         data-replyid="{{ item.id }}"
         data-battle-tag="{{ item.username }}"
       >
         <view class="titleWrap">
-          <image class="logo" src="{{ item.head_pic }}"></image>
+          <image
+            class="logo"
+            src="{{ item.head_pic }}"
+            catchtap="goToUserProfile"
+            data-openId="{{ item.openId }}"
+          ></image>
           <view class="authorWrap">
             <view class="author">{{ item.username }}</view>
             <view class="time">{{ item.createTime }}</view>
@@ -34,7 +38,7 @@
         <block wx:elif="{{ item.tag == '📚共同学习' }}">
           <van-tag size="large" color="#fbbd08">{{ item.tag }}</van-tag>
         </block>
-        <block wx:elif="{{ item.tag == '🏆竞赛伙伴' }}">
+        <block wx:elif="{{ item.tag == '🏆竞赛组队' }}">
           <van-tag size="large" color="#6739b6">{{ item.tag }}</van-tag>
         </block>
         <block wx:elif="{{ item.tag == '📢社团活动' }}">
@@ -66,8 +70,22 @@
           <van-icon size="25" name="comment-o" />{{ usersLikeList }}
         </view>
         <!-- 举报 -->
-        <view class="tool-item" catchtap="onCollectionTap" data-post-id="{{ item.id }}">
+        <view
+          wx:if="{{ !flag }}"
+          class="tool-item"
+          catchtap="onReportTap"
+          data-post-id="{{ item.id }}"
+        >
           <van-icon size="25" name="warn-o" />
+        </view>
+        <!-- 删除 -->
+        <view
+          wx:if="{{ flag }}"
+          class="tool-item"
+          catchtap="onDeleteTap"
+          data-post-id="{{ item.id }}"
+        >
+          <van-icon size="25" name="delete-o" />
         </view>
       </view>
     </block>

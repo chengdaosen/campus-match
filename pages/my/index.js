@@ -5,6 +5,7 @@ Page({
     userInfo: {},
     token: '',
     usersLike: [],
+    userPost: [],
   },
 
   /**
@@ -25,12 +26,26 @@ Page({
     const token = wx.getStorageSync('token')
     if (token) {
       this.getUserLikeTotal()
+      this.getUserPost()
       this.setData({
         userInfo: getApp().globalData.userInfo,
         token: token,
       })
       console.log('获取到的userInfo', getApp().globalData.userInfo)
     }
+  },
+  getUserPost() {
+    const openId = wx.getStorageSync('token')
+    myRequest({
+      url: '/personal/post',
+      method: 'POST',
+      data: { openId },
+    }).then((res) => {
+      console.log('用户帖子', res.data)
+      this.setData({
+        userPost: res.data,
+      })
+    })
   },
   //页面刷新时获取用户点赞数量
   getUserLikeTotal() {
@@ -54,10 +69,18 @@ Page({
           token: getApp().globalData.openId,
           usersLike: getApp().globalData.usersLike,
         })
+        this.getUserPost()
       })
       .catch((error) => {
         console.error('获取用户信息失败', error)
       })
+  },
+  toUserPost() {
+    if (getApp().globalData.openId) {
+      wx.navigateTo({
+        url: '../userPost/index',
+      })
+    }
   },
   toUserLike() {
     if (getApp().globalData.openId) {

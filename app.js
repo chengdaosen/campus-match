@@ -10,6 +10,7 @@ App({
     },
     openId: '',
     usersLike: [],
+    userPost: [],
   },
   onLaunch() {
     // 展示本地存储能力

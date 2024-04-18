@@ -1,0 +1,8 @@
+<!--pages/userPost/index.wxml-->
+<comment
+  bind:toGetUsersLikeList="getUsersLike"
+  bind:toDeleteUsersPost="deleteUsersPost"
+  usersLikeList="{{ usersLikeList }}"
+  commentList="{{ commentList }}"
+  flag="{{ flag }}"
+/>

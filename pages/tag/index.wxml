@@ -4,3 +4,6 @@
   usersLikeList="{{ usersLikeList }}"
   commentList="{{ commentList }}"
 />
+<block wx:if="{{ !commentList.length }}">
+  <van-empty description="展示没有相关帖子" />
+</block>

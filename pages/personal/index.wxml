@@ -1,0 +1,24 @@
+<!--pages/personal/index.wxml-->
+<view wx:if="{{ loading }}" class="loading">加载中...</view>
+<view wx:else class="parent_catainer">
+  <!-- 头部 -->
+  <view class="container_head">
+    <image class="head_img" src="/assets/image/背景.gif"></image>
+    <view class="head_pers_info" bindtap="head_pers_info">
+      <view class="head_pic">
+        <image
+          class="head_pic_content"
+          mode="aspectFit"
+          src="{{ userInfo[0].head_pic }}"
+        ></image>
+      </view>
+      <view class="inf_content">
+        <text class="user_info">{{ userInfo[0].username }}</text>
+        <text> 性别：{{ userInfo[0].sex }} </text>
+        <text class="family_info_ct_phone">QQ：{{ userInfo[0].qq }}</text>
+        <text class="family_info_ct">微信：{{ userInfo[0].wechat }} </text>
+      </view>
+    </view>
+  </view>
+  <comment usersLikeList="{{ usersLikeList }}" commentList="{{ commentList }}" />
+</view>

@@ -36,37 +36,61 @@
     </navigator>
   </view>
   <view class="tags">
-    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+    <navigator
+      url="/pages/tag/index?param=课余娱乐"
+      hover-class="navigator-hover"
+      open-type="navigate"
+    >
       <van-icon name="smile-o" size="30" />
       <view class="text"> 课余娱乐 </view>
     </navigator>
   </view>
   <view class="tags">
-    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+    <navigator
+      url="/pages/tag/index?param=运动搭子"
+      hover-class="navigator-hover"
+      open-type="navigate"
+    >
       <van-icon name="sign" size="30" />
       <view class="text"> 运动搭子 </view>
     </navigator>
   </view>
   <view class="tags">
-    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+    <navigator
+      url="/pages/tag/index?param=共同学习"
+      hover-class="navigator-hover"
+      open-type="navigate"
+    >
       <van-icon name="records-o" size="30" />
       <view class="text"> 共同学习 </view>
     </navigator>
   </view>
   <view class="tags">
-    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+    <navigator
+      url="/pages/tag/index?param=竞赛组队"
+      hover-class="navigator-hover"
+      open-type="navigate"
+    >
       <van-icon name="medal-o" size="30" />
       <view class="text"> 竞赛组队 </view>
     </navigator>
   </view>
   <view class="tags">
-    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+    <navigator
+      url="/pages/tag/index?param=社团活动"
+      hover-class="navigator-hover"
+      open-type="navigate"
+    >
       <van-icon name="hot-o" size="30" />
       <view class="text"> 社团活动 </view>
     </navigator>
   </view>
   <view class="tags">
-    <navigator url="/pages/tag/index" hover-class="navigator-hover" open-type="navigate">
+    <navigator
+      url="/pages/tag/index?param=桌游拼搭"
+      hover-class="navigator-hover"
+      open-type="navigate"
+    >
       <van-icon name="friends-o" size="30" />
       <view class="text"> 桌游拼搭 </view>
     </navigator>
@@ -74,7 +98,7 @@
   <view class="tags">
     <navigator
       style="width: 70px; height: 60px"
-      url="/pages/tag/index"
+      url="/pages/tag/index?param=其他"
       hover-class="navigator-hover"
       open-type="navigate"
     >

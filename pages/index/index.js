@@ -6,6 +6,7 @@ Page({
     commentList: [], //帖子列表
     commentTypeIndex: 1, //评论类型选择的index
     commentType: ['最热', '最新'],
+    flag: false,
   },
   onSearch() {
     console.log('搜索', this.data.value)
