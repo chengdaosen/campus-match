@@ -1,37 +1,6 @@
-@charset "UTF-8";
 .commentComponent {
   font-size: 0;
   background: #fff;
-}
-
-.commentComponent .writeCommentWrap {
-  position: relative;
-  height: 48rpx;
-  line-height: 48rpx;
-  background: #f2f2f2;
-  padding: 0 26rpx;
-  font-size: 22rpx;
-}
-
-.commentComponent .writeCommentWrap .comment {
-  color: #a1a8b3;
-}
-
-.commentComponent .writeCommentWrap .write {
-  color: #507da7;
-  float: right;
-  font-size: 22rpx;
-}
-
-.icon_arrow {
-  height: 12rpx;
-  width: 12rpx;
-  display: inline-block;
-  vertical-align: top;
-  margin: 16rpx 0 0 8rpx;
-  border-right: 1px solid #507da7;
-  border-bottom: 1px solid #507da7;
-  transform: rotateZ(45deg);
 }
 
 .commentComponent .commentItem {
@@ -103,32 +72,6 @@
   font-size: medium;
 }
 
-.commentComponent .commentItem .titleWrap .starWrap {
-  display: inline-block;
-  position: absolute;
-  right: 0;
-  top: -15rpx;
-  line-height: 30rpx;
-  padding: 20rpx 44rpx 0 0;
-  height: 80rpx;
-  width: 100rpx;
-  text-align: right;
-}
-
-.commentComponent .commentItem .titleWrap .starWrap .count {
-  color: #a6a6a8;
-  font-size: 20rpx;
-  line-height: 30rpx;
-  vertical-align: top;
-  display: inline-block;
-  margin-top: 10rpx;
-}
-
-.commentComponent .commentItem .titleWrap .starWrap .icon {
-  margin: 6rpx auto auto 9rpx;
-  vertical-align: top;
-}
-
 .commentComponent .commentItem .text {
   color: #434345;
   font-size: 28rpx;
@@ -137,83 +80,47 @@
   word-break: break-word;
 }
 
-.commentComponent .commentItemReply {
-  width: 650rpx;
-  margin-left: 100rpx;
-}
-
-.commentComponent .commentItemReply.commentItem {
-  padding: 20rpx 0 0 20rpx;
-  background: #f1f1f1;
-}
-
-.commentBlock {
-  padding: 80rpx;
-  font-size: 30rpx;
-  line-height: 50rpx;
-  color: #4b4b4b;
-  text-align: center;
-  background: #fff;
-}
-
-.commentBlock .commentBlockBtn {
-  height: 62rpx;
-  width: 220rpx;
-  border: 2px solid #1cb7f9;
-  border-radius: 30rpx;
-  margin: 30rpx auto;
-  font-size: 26rpx;
-  color: #1cb7f9;
-  font-weight: bold;
-  background: #fff;
-  line-height: 56rpx;
-}
-
-.more {
-  font-size: 16px;
-  line-height: 40px;
-  text-align: center;
-  background: #f2f2f2;
-  color: #666;
-}
-
-/* 自定义pop弹窗 */
-.popWrap {
-  position: fixed;
-  left: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0.7);
+.container {
   width: 100%;
-  height: 100%;
-  z-index: 10000;
+  padding: 0 40rpx 0 100rpx;
 }
 
-.popCont {
-  width: 560rpx;
-  height: 300rpx;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin: -170rpx 0 0 -280rpx;
-  background: #fff;
-  border-radius: 10rpx;
-  text-align: center;
+.container .container_inp {
+  width: 100%;
+  height: 60rpx;
+  background-color: #f2f2f2;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
 }
 
-.popText {
-  color: #000;
-  line-height: 36rpx;
-  font-size: 30rpx;
-  padding: 80rpx 0 40rpx;
-}
-
-.popCont button {
-  width: 310rpx;
-  height: 70rpx;
-  line-height: 70rpx;
+.container .container_place {
   font-size: 24rpx;
-  background: #00aeff;
-  border-radius: 35rpx;
-  text-align: center;
-  color: #fff;
+  color: #999999;
+  padding-left: 20rpx;
+}
+
+.view-hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.replay-item {
+  background-color: #f6f6f6;
+  margin-bottom: 10rpx;
+}
+
+.replay-item .container-item .item_right {
+  width: 636rpx;
+  padding: 8rpx 5rpx 8rpx 20rpx;
+}
+
+.replay-item .container-item .item_right .right_name {
+  display: inline-block;
+  font-size: 28rpx;
+  color: #00b5ec;
+}
+
+.replay-item .container-item .item_right .right_content_txt {
+  display: inline-block;
+  font-size: 28rpx;
+  color: #333333;
 }

@@ -9,8 +9,8 @@
     "pages/userPost/index",
     "pages/tag/index",
     "pages/personal/index",
-    "components/comment/index",
-    "components/comment/submit/index"
+    "pages/userComment/index",
+    "components/comment/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -50,6 +50,8 @@
     "van-icon": "@vant/weapp/icon/index",
     "van-tag": "@vant/weapp/tag/index",
     "van-field": "@vant/weapp/field/index",
-    "van-empty": "@vant/weapp/empty/index"
+    "van-empty": "@vant/weapp/empty/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
   }
 }

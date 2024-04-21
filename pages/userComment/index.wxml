@@ -1,0 +1,11 @@
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title="我评论的"
+    ><comment
+      bind:toGetUsersLikeList="getUsersLike"
+      bind:toUpdateReplay="getReplay"
+      usersLikeList="{{ usersLikeList }}"
+      commentList="{{ commentList }}"
+      replayList="{{ replayList }}"
+  /></van-tab>
+  <van-tab title="收到的消息">内容 2</van-tab>
+</van-tabs>

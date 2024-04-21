@@ -89,6 +89,13 @@ Page({
       })
     }
   },
+  toComment() {
+    if (getApp().globalData.openId) {
+      wx.navigateTo({
+        url: '../userComment/index',
+      })
+    }
+  },
   /**
    * goto 微信客服页
    */

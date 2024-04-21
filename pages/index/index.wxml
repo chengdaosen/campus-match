@@ -121,7 +121,9 @@
 </view>
 <comment
   bind:toGetUsersLikeList="getUsersLike"
+  bind:toUpdateReplay="getReplay"
   usersLikeList="{{ usersLikeList }}"
   commentList="{{ commentList }}"
+  replayList="{{ replayList }}"
 />
 <view style="height: 51px"></view>

@@ -40,10 +40,8 @@
         <view class="text-xxl text-orange">{{ token ? userPost.length : '-' }}</view>
         <view class="margin-top-sm"> <text class="cuIcon-newsfill"></text> 动态 </view>
       </view>
-      <view class="flex flex-sub flex-direction solid-right">
-        <view class="text-xxl text-green">{{
-          appGlobalData.isAuth ? appGlobalData.userInfo.got_post_comment_num : '-'
-        }}</view>
+      <view bindtap="toComment" class="flex flex-sub flex-direction solid-right">
+        <view class="text-xxl text-green">{{ token ? userPost.length : '-' }}</view>
         <view class="margin-top-sm"> <text class="cuIcon-commentfill"></text> 评论 </view>
       </view>
       <view bindtap="toUserLike" class="flex flex-sub flex-direction">

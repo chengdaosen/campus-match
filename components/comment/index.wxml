@@ -1,7 +1,6 @@
 <!-- 评论组件 Component -->
 <view class="commentComponent">
   <block wx:if="{{ commentList.length > 0 }}">
-    <!-- 评论模块 -->
     <block wx:for="{{ commentList }}" wx:for-item="item" wx:for-index="index" wx:key="id">
       <view
         class="commentItem"
@@ -86,6 +85,58 @@
           data-post-id="{{ item.id }}"
         >
           <van-icon size="25" name="delete-o" />
+        </view>
+      </view>
+      <!-- 评论回复 -->
+      <view class="container">
+        <!-- 评论框 -->
+        <block wx:if="{{ activePostId === item.id }}">
+          <van-field
+            model:value="{{ value }}"
+            center
+            clearable
+            border
+            placeholder="请输入评论内容"
+            custom-class="container_inp"
+            border
+            use-button-slot
+          >
+            <van-button
+              style="position: absolute; right: 0; top: 0; z-index: 999"
+              slot="button"
+              size="small"
+              type="info"
+              data-post-id="{{ item.id }}"
+              bindtap="toSend"
+            >
+              发送
+            </van-button>
+          </van-field>
+        </block>
+        <!-- 帖子下面的回复 -->
+        <view class="replay-item">
+          <view
+            class="container-item"
+            hover-class="view-hover"
+            wx:for="{{ replayList }}"
+            wx:for-item="list"
+            wx:key="key"
+          >
+            <block wx:if="{{ list.postId == item.id }}">
+              <view class="item_right">
+                <view class="right_name">{{ list.username }}</view>
+                <text
+                  class="right_content_txt"
+                  bindtap="replyComment"
+                  data-type="1"
+                  data-name="{{ list.username }}"
+                  data-cid="{{ list.id }}"
+                  data-pid="{{ list.parent_id }}"
+                  >：{{ list.text }}</text
+                >
+              </view></block
+            >
+          </view>
         </view>
       </view>
     </block>

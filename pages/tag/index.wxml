@@ -5,5 +5,5 @@
   commentList="{{ commentList }}"
 />
 <block wx:if="{{ !commentList.length }}">
-  <van-empty description="展示没有相关帖子" />
+  <van-empty description="暂时没有相关帖子" />
 </block>

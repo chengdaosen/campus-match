@@ -14,6 +14,10 @@ Component({
       value: [],
       // observer: '_updateCommentList',
     },
+    replayList: {
+      type: Array,
+      value: [],
+    },
     usersLikeList: {
       type: Array,
       value: [],
@@ -31,15 +35,96 @@ Component({
     commentList(val) {
       console.log('新commentList值', val)
     },
+    replayList(val) {
+      console.log('新replayList值', val)
+    },
   },
   /**
    * 组件的初始数据
    */
-  data: {},
+  data: {
+    // 存储当前处于评论状态的帖子的标识
+    activePostId: null,
+    value: '',
+  },
   /**
    * 组件的方法列表
    */
   methods: {
+    //打开或关闭评论框
+    commentStatus(postId) {
+      const { activePostId } = this.data
+      // 如果点击的帖子已经是处于评论状态，则隐藏评论框
+      if (activePostId === postId) {
+        this.setData({
+          activePostId: null,
+        })
+      } else {
+        // 如果点击的帖子不是处于评论状态，则显示评论框
+        this.setData({
+          activePostId: postId,
+        })
+      }
+    },
+    //评论
+    onCommentTap(e) {
+      const postId = e.currentTarget.dataset.postId
+      const openId = wx.getStorageSync('token')
+      if (openId) {
+        this.commentStatus(postId)
+      } else {
+        const that = this
+        // 用户未登录，提示登录并进行微信授权登录
+        wx.showModal({
+          title: '登录提醒',
+          content: '您还未登录，是否进行微信授权登录',
+          confirmText: '是',
+          cancelText: '否',
+          success(res) {
+            if (res.confirm) {
+              // 用户确认登录，进行微信授权登录
+              getUserProfile().then(() => {
+                that.commentStatus(postId)
+              })
+            }
+          },
+        })
+      }
+    },
+    //发送评论
+    toSend(e) {
+      const that = this
+      const postId = e.currentTarget.dataset.postId
+      const openId = wx.getStorageSync('token')
+      const username = getApp().globalData.userInfo.username
+      const text = this.data.value
+      const pramas = { postId, openId, username, text }
+      myRequest({
+        url: '/comment',
+        method: 'POST',
+        data: pramas,
+      })
+        .then((res) => {
+          if (res.statusCode === 200) {
+            console.log('评论成功', res)
+            wx.showToast({
+              title: '评论成功',
+              icon: 'success',
+              duration: 2000,
+            })
+            that.commentStatus(postId)
+            that.triggerEvent('toUpdateReplay')
+          }
+        })
+        .catch((error) => {
+          console.error('评论失败', error)
+          wx.showToast({
+            title: '评论失败，请稍后重试',
+            icon: 'error',
+            duration: 2000,
+          })
+        })
+    },
     onLikeTap(e) {
       const that = this
       const openId = wx.getStorageSync('token')

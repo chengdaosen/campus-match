@@ -4,6 +4,7 @@ Page({
     value: '',
     usersLikeList: [],
     commentList: [], //帖子列表
+    replayList: [],
     commentTypeIndex: 1, //评论类型选择的index
     commentType: ['最热', '最新'],
     flag: false,
@@ -32,6 +33,24 @@ Page({
       })
     })
   },
+  //获取回复内容
+  getReplay() {
+    myRequest({
+      url: '/comment',
+      method: 'GET',
+    })
+      .then((res) => {
+        console.log('Response:', res)
+        this.setData({
+          replayList: res.data,
+        })
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+        // 在请求失败时的处理逻辑
+      })
+  },
+
   //获取帖子内容
   getPosts() {
     const openId = wx.getStorageSync('token')
@@ -53,6 +72,7 @@ Page({
   // 页面显示时触发
   onShow() {
     const openId = wx.getStorageSync('token')
+    this.getReplay()
     if (openId) {
       this.getUsersLike()
     }
