@@ -1,11 +1,40 @@
-<van-tabs active="{{ active }}" bind:change="onChange">
+<van-tabs color="#0061b0" active="{{ active }}" bind:change="onChange">
   <van-tab title="我评论的"
     ><comment
       bind:toGetUsersLikeList="getUsersLike"
-      bind:toUpdateReplay="getReplay"
+      bind:toUpdateReplay="getMyComment"
       usersLikeList="{{ usersLikeList }}"
       commentList="{{ commentList }}"
-      replayList="{{ replayList }}"
-  /></van-tab>
-  <van-tab title="收到的消息">内容 2</van-tab>
+      replyList="{{ replyList }}"
+      replysList="{{ replysList }}"
+    />
+    <block wx:if="{{ !commentList.length }}">
+      <van-empty description="暂时没有评论过的帖子" />
+    </block>
+  </van-tab>
+  <van-tab title="收到的消息">
+    <view wx:for="{{ commentInfo }}" wx:for-item="list" wx:key="id">
+      <block wx:if="{{ list.reply_id == 0 }}">
+        <view
+          hover-class="view-hover"
+          bindtap="toDetail"
+          data-post-id="{{ list.postId }}"
+          class="message"
+        >
+          <image class="header-icon" src="{{ list.head_pic }}"></image>
+          <view class="info"> {{ list.username }}评论了你的帖子 </view>
+        </view>
+      </block>
+    </view>
+    <!-- <view>
+      <view class="message">
+        <image class="header-icon" src="../../assets/image/未登录头像.jpg"></image>
+        <view class="info"> 回复了你的消息 </view>
+      </view>
+    </view> -->
+
+    <block wx:if="{{ !commentList.length }}">
+      <van-empty description="暂时没有消息" />
+    </block>
+  </van-tab>
 </van-tabs>

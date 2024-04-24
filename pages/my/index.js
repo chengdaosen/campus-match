@@ -6,6 +6,7 @@ Page({
     token: '',
     usersLike: [],
     userPost: [],
+    commentTotal: [],
   },
 
   /**
@@ -27,12 +28,33 @@ Page({
     if (token) {
       this.getUserLikeTotal()
       this.getUserPost()
+      this.getUserCommentTotal()
       this.setData({
         userInfo: getApp().globalData.userInfo,
         token: token,
       })
       console.log('获取到的userInfo', getApp().globalData.userInfo)
     }
+  },
+
+  getUserCommentTotal() {
+    const openId = wx.getStorageSync('token')
+    myRequest({
+      url: '/news',
+      method: 'POST',
+      data: { openId },
+    })
+      .then((res) => {
+        console.log('243214213412', res.data.commentInfo)
+        const commentTotal = res.data.commentInfo.filter((item) => item.reply_id == 0)
+        this.setData({
+          commentTotal,
+        })
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+        // 在请求失败时的处理逻辑
+      })
   },
   getUserPost() {
     const openId = wx.getStorageSync('token')
@@ -117,12 +139,14 @@ Page({
           wx.showLoading({ title: '正在退出登录' })
           // 清除用户信息
           getApp().globalData.userInfo = {
+            token: '',
             username: '',
             head_pic: '',
             sex: '',
             wecaht: '',
             QQ: '',
           }
+          getApp().globalData.openId = ''
           console.log('清除用户信息', getApp().globalData.userInfo)
           // 清除本地缓存中的token
           wx.removeStorage({

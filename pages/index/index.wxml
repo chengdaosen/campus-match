@@ -6,6 +6,10 @@
   bind:change="onChange"
   bind:cancel="onCancel"
 />
+<van-notice-bar
+  left-icon="volume-o"
+  text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+/>
 <view class="banner">
   <swiper
     indicator-dots="true"
@@ -121,9 +125,10 @@
 </view>
 <comment
   bind:toGetUsersLikeList="getUsersLike"
-  bind:toUpdateReplay="getReplay"
+  bind:toUpdateReplay="getReply"
   usersLikeList="{{ usersLikeList }}"
   commentList="{{ commentList }}"
-  replayList="{{ replayList }}"
+  replyList="{{ replyList }}"
+  replysList="{{ replysList }}"
 />
 <view style="height: 51px"></view>

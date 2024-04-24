@@ -96,7 +96,7 @@
             center
             clearable
             border
-            placeholder="请输入评论内容"
+            placeholder="{{ placeholder }}"
             custom-class="container_inp"
             border
             use-button-slot
@@ -118,24 +118,54 @@
           <view
             class="container-item"
             hover-class="view-hover"
-            wx:for="{{ replayList }}"
+            wx:for="{{ replyList }}"
             wx:for-item="list"
-            wx:key="key"
+            wx:key="id"
           >
             <block wx:if="{{ list.postId == item.id }}">
-              <view class="item_right">
+              <view
+                data-id="{{ list.id }}"
+                data-post-id="{{ list.postId }}"
+                data-username="{{ list.username }}"
+                bindtap="toReply"
+                class="item_right"
+              >
                 <view class="right_name">{{ list.username }}</view>
                 <text
                   class="right_content_txt"
                   bindtap="replyComment"
                   data-type="1"
                   data-name="{{ list.username }}"
-                  data-cid="{{ list.id }}"
-                  data-pid="{{ list.parent_id }}"
                   >：{{ list.text }}</text
                 >
-              </view></block
-            >
+              </view>
+            </block>
+          </view>
+          <!-- 评论的评论 -->
+          <view
+            class="container-item"
+            hover-class="view-hover"
+            wx:for="{{ replysList }}"
+            wx:for-item="list"
+            wx:key="id"
+          >
+            <block wx:if="{{ list.postId == item.id }}">
+              <view
+                data-id="{{ list.id }}"
+                data-post-id="{{ list.postId }}"
+                data-username="{{ list.username }}"
+                bindtap="toReply"
+                class="item_right"
+              >
+                <view class="right_name">{{ list.username }}</view>
+                <text class="right_content_txt" bindtap="replyComment" data-type="1"
+                  >回复<text style="font-size: 28rpx; color: rgb(0, 181, 236)">{{
+                    list.reply_name
+                  }}</text
+                  >：{{ list.text }}</text
+                >
+              </view>
+            </block>
           </view>
         </view>
       </view>

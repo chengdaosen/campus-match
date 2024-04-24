@@ -14,7 +14,11 @@ Component({
       value: [],
       // observer: '_updateCommentList',
     },
-    replayList: {
+    replyList: {
+      type: Array,
+      value: [],
+    },
+    replysList: {
       type: Array,
       value: [],
     },
@@ -46,11 +50,35 @@ Component({
     // 存储当前处于评论状态的帖子的标识
     activePostId: null,
     value: '',
+    placeholder: '请输入评论内容',
+    reply_id: '',
+    reply_name: '',
+    parent_id: '',
   },
   /**
    * 组件的方法列表
    */
   methods: {
+    //点击下方评论进行回复
+    toReply(e) {
+      const openId = wx.getStorageSync('token')
+      if (openId) {
+        const { postId, id, username } = e.currentTarget.dataset
+        console.log('获取到的信息', postId, id, username)
+        this.setData({
+          placeholder: '回复' + username + ':',
+        })
+        const reply_name = username
+        const reply_id = id
+        const parent_id = postId
+        this.setData({
+          activePostId: postId,
+          reply_id,
+          reply_name,
+          parent_id,
+        })
+      }
+    },
     //打开或关闭评论框
     commentStatus(postId) {
       const { activePostId } = this.data
@@ -58,6 +86,7 @@ Component({
       if (activePostId === postId) {
         this.setData({
           activePostId: null,
+          placeholder: '请输入评论内容',
         })
       } else {
         // 如果点击的帖子不是处于评论状态，则显示评论框
@@ -93,37 +122,76 @@ Component({
     },
     //发送评论
     toSend(e) {
-      const that = this
-      const postId = e.currentTarget.dataset.postId
-      const openId = wx.getStorageSync('token')
-      const username = getApp().globalData.userInfo.username
-      const text = this.data.value
-      const pramas = { postId, openId, username, text }
-      myRequest({
-        url: '/comment',
-        method: 'POST',
-        data: pramas,
-      })
-        .then((res) => {
-          if (res.statusCode === 200) {
-            console.log('评论成功', res)
+      if (this.data.placeholder !== '请输入评论内容') {
+        const that = this
+        const parmas = {
+          text: this.data.value,
+          username: getApp().globalData.userInfo.username,
+          postId: this.data.activePostId,
+          reply_name: this.data.reply_name,
+          reply_id: this.data.reply_id,
+          parent_id: this.data.parent_id,
+          openId: wx.getStorageSync('token'),
+        }
+        myRequest({
+          url: '/comment/reply',
+          method: 'POST',
+          data: parmas,
+        })
+          .then((res) => {
+            if (res.statusCode === 200) {
+              console.log('评论成功', res)
+              wx.showToast({
+                title: '评论成功',
+                icon: 'success',
+                duration: 2000,
+              })
+              that.data.placeholder = '请输入评论内容'
+              that.commentStatus(this.data.activePostId)
+              that.triggerEvent('toUpdateReplay')
+            }
+          })
+          .catch((error) => {
+            console.error('评论失败', error)
             wx.showToast({
-              title: '评论成功',
-              icon: 'success',
+              title: '评论失败，请稍后重试',
+              icon: 'error',
               duration: 2000,
             })
-            that.commentStatus(postId)
-            that.triggerEvent('toUpdateReplay')
-          }
-        })
-        .catch((error) => {
-          console.error('评论失败', error)
-          wx.showToast({
-            title: '评论失败，请稍后重试',
-            icon: 'error',
-            duration: 2000,
           })
+      } else {
+        const that = this
+        const postId = e.currentTarget.dataset.postId
+        const openId = wx.getStorageSync('token')
+        const username = getApp().globalData.userInfo.username
+        const text = this.data.value
+        const pramas = { postId, openId, username, text }
+        myRequest({
+          url: '/comment',
+          method: 'POST',
+          data: pramas,
         })
+          .then((res) => {
+            if (res.statusCode === 200) {
+              console.log('评论成功', res)
+              wx.showToast({
+                title: '评论成功',
+                icon: 'success',
+                duration: 2000,
+              })
+              that.commentStatus(postId)
+              that.triggerEvent('toUpdateReplay')
+            }
+          })
+          .catch((error) => {
+            console.error('评论失败', error)
+            wx.showToast({
+              title: '评论失败，请稍后重试',
+              icon: 'error',
+              duration: 2000,
+            })
+          })
+      }
     },
     onLikeTap(e) {
       const that = this

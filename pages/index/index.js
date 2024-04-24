@@ -4,7 +4,8 @@ Page({
     value: '',
     usersLikeList: [],
     commentList: [], //帖子列表
-    replayList: [],
+    replyList: [],
+    replysList: [],
     commentTypeIndex: 1, //评论类型选择的index
     commentType: ['最热', '最新'],
     flag: false,
@@ -34,15 +35,25 @@ Page({
     })
   },
   //获取回复内容
-  getReplay() {
+  getReply() {
     myRequest({
       url: '/comment',
       method: 'GET',
     })
       .then((res) => {
         console.log('Response:', res)
+        const replyList = []
+        const replysList = []
+        res.data.forEach((item) => {
+          if (item.parent_id === 0) {
+            replyList.push(item)
+          } else {
+            replysList.push(item)
+          }
+        })
         this.setData({
-          replayList: res.data,
+          replyList: replyList,
+          replysList: replysList,
         })
       })
       .catch((error) => {
@@ -72,7 +83,7 @@ Page({
   // 页面显示时触发
   onShow() {
     const openId = wx.getStorageSync('token')
-    this.getReplay()
+    this.getReply()
     if (openId) {
       this.getUsersLike()
     }

@@ -1,0 +1,12 @@
+<!--pages/detail/index.wxml-->
+<comment
+  bind:toGetUsersLikeList="getUsersLike"
+  bind:toUpdateReplay="getReply"
+  usersLikeList="{{ usersLikeList }}"
+  commentList="{{ commentList }}"
+  replyList="{{ replyList }}"
+  replysList="{{ replysList }}"
+/>
+<block wx:if="{{ !commentList.length }}">
+  <van-empty description="暂时没有评论过的帖子" />
+</block>
